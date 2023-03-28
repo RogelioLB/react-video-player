@@ -19,5 +19,9 @@ export type VideoPlayer = {
     state: PlayerStates,
     Play:()=>void,
     setPlayer: (ref:RefObject<HTMLVideoElement | undefined>)=>void,
-    Pause:()=>void
+    Pause:()=>void,
+    duration:number | undefined,
+    current:number | undefined,
+    updateCurrent:(currentTime: number) => void,
+    setCurrent:React.Dispatch<React.SetStateAction<number | undefined>>
 } | null

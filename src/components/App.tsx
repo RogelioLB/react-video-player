@@ -24,7 +24,8 @@ const Video = styled.video`
 export default function VideoPlayer({width,height,url}:VideoPlayerProps){
     const [hideControls,setHideControls] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
-    const {setPlayer,play,pause,state} = usePlayerState()
+    const {setPlayer,play,pause,state,setCurrent} = usePlayerState()
+
 
     const handleMouseMove = () => {
         const timeout = setTimeout(()=>setHideControls(true),5000)
@@ -46,7 +47,7 @@ export default function VideoPlayer({width,height,url}:VideoPlayerProps){
 
     return (
         <VideoContainer width={width} height={height} onMouseMove={handleMouseMove} onClick={handleClick}>
-            <Video src={url} ref={videoRef}/>
+            <Video src={url} ref={videoRef} onTimeUpdate={(e)=>{if(setCurrent) setCurrent(e.currentTarget.currentTime)}}/>
             <Controls hide={hideControls} />
         </VideoContainer>
     )
