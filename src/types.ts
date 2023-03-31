@@ -2,5 +2,6 @@ export enum PlayerStates{
     PLAYING,
     STOPPED,
     PAUSE,
-    IDLE
+    IDLE,
+    LOADING
 }

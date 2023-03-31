@@ -1,31 +1,17 @@
-import React, { useEffect, useRef, useState } from "react"
-import styled from "styled-components"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import usePlayerState from "../hooks/usePlayerState"
-import { PlayerStates, VideoContainerProps, VideoPlayerProps } from "../types"
+import { PlayerStates, VideoPlayerProps } from "../types"
 import { Controls } from "./Controls"
+import { Loader, Video, VideoContainer } from "./StyledComponents";
+import { FullScreen, FullScreenHandle } from "react-full-screen";
 
-
-
-const VideoContainer = styled.div<VideoContainerProps>`
-    position: relative;
-    width: ${props=>typeof props.width === "number" ? props.width+"px" : props.width};
-    height: ${props=>typeof props.height === "number" ? props.height+"px" : props.height};
-    background-color:#000;
-    overflow:hidden;
-`
-
-
-
-const Video = styled.video`
-    width:100%;
-    height:100%;
-`
 
 export default function VideoPlayer({width,height,url}:VideoPlayerProps){
     const [hideControls,setHideControls] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
-    const {setPlayer,play,pause,state,setCurrent} = usePlayerState()
-
+    const props = usePlayerState()
+    const {setPlayer,play,pause,state,setCurrent,load,canPlay, reportChange} = props;
+    const handleScreen = props.handleScreen as FullScreenHandle
 
     const handleMouseMove = () => {
         const timeout = setTimeout(()=>setHideControls(true),5000)
@@ -43,12 +29,16 @@ export default function VideoPlayer({width,height,url}:VideoPlayerProps){
     useEffect(()=>{
         if(setPlayer) setPlayer(videoRef)
     },[videoRef,setPlayer])
+
     
 
     return (
-        <VideoContainer width={width} height={height} onMouseMove={handleMouseMove} onClick={handleClick}>
-            <Video src={url} ref={videoRef} onTimeUpdate={(e)=>{if(setCurrent) setCurrent(e.currentTarget.currentTime)}}/>
-            <Controls hide={hideControls} />
+        <VideoContainer  width={width} height={height} onMouseMove={handleMouseMove} onClick={handleClick}>
+            <FullScreen handle={handleScreen} onChange={reportChange}>
+                <Video src={url} ref={videoRef} onLoadedData={load} onCanPlay={canPlay} onTimeUpdate={(e)=>{if(setCurrent) setCurrent(e.currentTarget.currentTime)}}/>
+                {state === PlayerStates.LOADING && <Loader />}
+                <Controls hide={hideControls} />
+            </FullScreen>
         </VideoContainer>
     )
 }

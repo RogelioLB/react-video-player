@@ -13,6 +13,13 @@ export default function usePlayerState(){
         duration:values?.duration,
         current:values?.current,
         updateCurrent:values?.updateCurrent,
-        setCurrent:values?.setCurrent
+        setCurrent:values?.setCurrent,
+        load:values?.load,
+        canPlay:values?.canPlay,
+        fullScreen:values?.fullScreen,
+        exitFullScreen:values?.exitFullScreen,
+        screen:values?.screen,
+        handleScreen:values?.handleScreen,
+        reportChange:values?.reportChange
     }
 }
