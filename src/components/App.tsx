@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import usePlayerState from "../hooks/usePlayerState"
 import { PlayerStates, VideoPlayerProps } from "../types"
 import { Controls } from "./Controls"

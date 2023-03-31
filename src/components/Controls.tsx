@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import usePlayerState from "../hooks/usePlayerState"
 import { PlayerStates } from "../types"
 import {FaPause, FaPlay} from "react-icons/fa"
