@@ -1,6 +1,6 @@
 {
   "name": "@rogeliolb/react-v-player",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "module":"dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "devDependencies": {
     "@types/react": "^18.0.29",
