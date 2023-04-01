@@ -77,6 +77,7 @@ export const Icon = styled.span`
     display:flex;
     align-items:center;
     cursor:pointer;
+    font-size:24px;
 `
 
 
@@ -130,10 +131,27 @@ export const Loader = styled.div`
     } 
 `
 
+export const FullScreen = styled.div``
+
 export const PlayPause = styled.div`
     
 `
 
-export const FullScreen = styled.div`
-    
+export const DurationContainer = styled.div`
+    position:absolute;
+    top:-35px;
+    left:0px;
+    padding:0 15px;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+`
+
+export const Duration = styled.span`
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    font-weight:700;
+    font-family: 'Poppins', sans-serif;
+    text-shadow:black 1px 2px 5px;
 `

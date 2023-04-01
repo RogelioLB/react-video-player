@@ -10,7 +10,7 @@ export default function VideoContext({children}:{children:JSX.Element|JSX.Elemen
     const [state,setState] = useState<PlayerStates | undefined>(PlayerStates.LOADING);
     const [previous,setPrevious] = useState<PlayerStates>();
     const [ref,setRef] = useState<RefObject<HTMLVideoElement | undefined>>()
-    const [duration,setDuration] = useState<number>()
+    const [duration,setDuration] = useState<number | undefined>(0)
     const [current,setCurrent] = useState<number | undefined>(0)
     const [screen,setScreen] = useState({option:"min"})
     const handleScreen = useFullScreenHandle()
@@ -35,7 +35,6 @@ export default function VideoContext({children}:{children:JSX.Element|JSX.Elemen
         if(ref?.current?.currentTime){
             setCurrent(currentTime)
             if(state!==PlayerStates.LOADING){
-                console.log("Estado: ",state)
                 setPrevious(state)
             } 
             setState(PlayerStates.LOADING)

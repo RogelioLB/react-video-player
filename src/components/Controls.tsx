@@ -1,9 +1,9 @@
 import React from "react"
 import usePlayerState from "../hooks/usePlayerState"
 import { PlayerStates } from "../types"
-import {FaPause, FaPlay} from "react-icons/fa"
-import {BiExitFullscreen, BiFullscreen} from "react-icons/bi"
-import { ControlsContainer, ControlsProps, FullScreen, Icon, PlayPause,  ProgressBar } from "./StyledComponents"
+import {BiExitFullscreen, BiFullscreen, BiPlay, BiPause} from "react-icons/bi"
+import { ControlsContainer, ControlsProps,  Duration,  DurationContainer,  FullScreen,  Icon, PlayPause,  ProgressBar } from "./StyledComponents"
+import { format } from "../utils/format"
 
 export const Controls = (props:ControlsProps) =>{
     const player = usePlayerState()
@@ -12,6 +12,10 @@ export const Controls = (props:ControlsProps) =>{
 
     return(
         <ControlsContainer {...props} onClick={(e)=>e.stopPropagation()}>
+            <DurationContainer>
+                <Duration>{format(current)}</Duration>
+                <Duration>{format(duration)}</Duration>
+            </DurationContainer>
             <ProgressBar value={current} max={duration} type="range"  onChange={(e)=>{
                 
                 if(updateCurrent) updateCurrent(Number(e.target.value))
@@ -19,11 +23,11 @@ export const Controls = (props:ControlsProps) =>{
             <PlayPause>
                 {
                     state === PlayerStates.PLAYING ? (
-                        <Icon onClick={pause}><FaPause /></Icon>
+                        <Icon onClick={pause}><BiPause /></Icon>
                     )
                     :
                     (
-                        <Icon onClick={play}><FaPlay /></Icon>
+                        <Icon onClick={play}><BiPlay /></Icon>
                     )
                 }
             </PlayPause>
