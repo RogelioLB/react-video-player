@@ -96,7 +96,7 @@ PERFORMANCE OF THIS SOFTWARE.
     color:white;
     transition:.5s all ease;
     background-color:rgb(23 32 42 /.5);
-`])),function(e){return e.hide?"-70px":"0"}),p0=Ct.input(Qs||(Qs=kt([`
+`])),function(e){return e.hide?"-100px":"0"}),p0=Ct.input(Qs||(Qs=kt([`
     position:absolute;
     height:10px;
     top:-10px;
