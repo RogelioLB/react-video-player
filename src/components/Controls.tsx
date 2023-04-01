@@ -3,7 +3,7 @@ import usePlayerState from "../hooks/usePlayerState"
 import { PlayerStates } from "../types"
 import {FaPause, FaPlay} from "react-icons/fa"
 import {BiExitFullscreen, BiFullscreen} from "react-icons/bi"
-import { ControlsContainer, ControlsProps, FullScreen, Icon, PlayPause, ProgressBar } from "./StyledComponents"
+import { ControlsContainer, ControlsProps, FullScreen, Icon, PlayPause,  ProgressBar } from "./StyledComponents"
 
 export const Controls = (props:ControlsProps) =>{
     const player = usePlayerState()

@@ -14,10 +14,10 @@ export default function VideoPlayer({width,height,url}:VideoPlayerProps){
     const handleScreen = props.handleScreen as FullScreenHandle
 
     const handleMouseMove = () => {
-        const timeout = setTimeout(()=>setHideControls(true),5000)
+        //const timeout = setTimeout(()=>setHideControls(true),5000)
         if(hideControls)
             setHideControls(false)
-        else clearTimeout(timeout)
+        //else clearTimeout(timeout)
     }
 
     const handleClick = () =>{

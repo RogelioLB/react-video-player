@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import VideoPlayer from "@rogeliolb/react-v-player"
+import VideoPlayer from "../../src/"
 
 function App() {
 

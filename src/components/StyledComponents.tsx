@@ -20,6 +20,9 @@ export const ControlsContainer = styled.div<ControlsProps>`
     transition:.5s all ease;
     background-color:rgb(23 32 42 /.5);
 `
+
+
+
 export const ProgressBar = styled.input`
     position:absolute;
     height:10px;
@@ -28,10 +31,9 @@ export const ProgressBar = styled.input`
     width:100%;
     appearance: none;
     border-radius: 0px;
-    background:trasparent;
+    background:blue;
     overflow: hidden;
     -webkit-appearance: none;
-    background-color: #9a905d;
     cursor:pointer;
 
     &::-moz-range-track{
@@ -39,11 +41,30 @@ export const ProgressBar = styled.input`
         height:100%;
     }
 
-    &::-moz-range-thumb, &::-webkit-slider-thumb{
+    &::-webkit-slider-runnable-track{
+        background-color: #3e3e3e;
+        height: 100%;
+    }
+
+    &::-moz-range-thumb{
         display:none;
         appearance: none;
         -webkit-appearance: none;
+        background:transparent;
         opacity:0;
+    }
+
+    &::-webkit-slider-thumb{
+        appearance: none;
+        -webkit-appearance: none;
+        width:10px;
+        height:100%;
+        background-color: #3498db;
+    }
+
+    &::-webkit-progress-value{
+        height: 100%;
+        background-color: #3498db;
     }
 
     &::-moz-range-progress{

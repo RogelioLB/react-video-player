@@ -5,4 +5,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base:"/react-video-player/",
   plugins: [react()],
+  server:{
+    host:true,
+    fs:{
+      allow:[".."]
+    }
+  }
 })
