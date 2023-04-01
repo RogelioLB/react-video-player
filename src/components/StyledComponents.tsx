@@ -7,7 +7,7 @@ export type ControlsProps = {
 
 export const ControlsContainer = styled.div<ControlsProps>`
     position:absolute;
-    bottom:${props=>props.hide ? "-70px" : "0"};
+    bottom:${props=>props.hide ? "-100px" : "0"};
     left:0;
     width:100%;
     display:flex;
