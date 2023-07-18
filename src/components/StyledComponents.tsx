@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {VideoContainerProps } from "../types"
+import {VideoContainerProps } from "../types/types"
 
 export type ControlsProps = {
     hide:boolean
@@ -21,19 +21,19 @@ export const ControlsContainer = styled.div<ControlsProps>`
     background-color:rgb(23 32 42 /.5);
 `
 
-
-
-export const ProgressBar = styled.input`
-    position:absolute;
-    height:10px;
-    top:-10px;
-    left:0;
-    width:100%;
-    appearance: none;
-    border-radius: 0px;
-    background:blue;
-    overflow: hidden;
+export const ProgressBar = styled.input<{percentage:number}>`
+    position: absolute;
+    top:0px;
+    left: 0;
+    right:0;
     -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: #9CA3AF;
+    background-image: linear-gradient(#fff,#fff);
+    background-size: ${props=>props.percentage}% 100%;
+    background-repeat: no-repeat;
+    border-radius: 0px;
     cursor:pointer;
 
     &::-moz-range-track{
@@ -41,36 +41,25 @@ export const ProgressBar = styled.input`
         height:100%;
     }
 
-    &::-webkit-slider-runnable-track{
-        background-color: #3e3e3e;
-        height: 100%;
+    &::-webkit-slider-runnable-track  {
+        -webkit-appearance: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
     }
 
     &::-moz-range-thumb{
-        display:none;
-        appearance: none;
         -webkit-appearance: none;
-        background:transparent;
-        opacity:0;
-    }
-
-    &::-webkit-slider-thumb{
         appearance: none;
+        height: 0px;
+        width: 0px;
+    }
+
+    &::-webkit-slider-thumb {
         -webkit-appearance: none;
-        width:10px;
-        height:100%;
-        background-color: #3498db;
-    }
-
-    &::-webkit-progress-value{
-        height: 100%;
-        background-color: #3498db;
-    }
-
-    &::-moz-range-progress{
-        height:100%;
-        background-color: #3498db;
-    }
+        height: 0px;
+        width: 0px;
+  }
 `
 
 export const Icon = styled.span`

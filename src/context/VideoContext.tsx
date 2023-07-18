@@ -1,6 +1,7 @@
 import React, { createContext, RefObject,useCallback,useEffect,useState } from "react";
-import {PlayerStates, VideoPlayer} from "../types"
+import { VideoPlayer } from "../types/types"
 import {  useFullScreenHandle } from "react-full-screen";
+import { PlayerStates } from "../types/types";
 
 
 

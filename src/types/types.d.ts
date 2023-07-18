@@ -11,13 +11,7 @@ export interface VideoPlayerProps extends VideoContainerProps{
     onMouseMove?:()=>void
 }
 
-export enum PlayerStates{
-    PLAYING,
-    STOPPED,
-    PAUSE,
-    IDLE,
-    LOADING
-}
+
 
 export type VideoPlayer = {
     state?: PlayerStates,

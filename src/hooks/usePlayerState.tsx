@@ -1,6 +1,6 @@
 import { useContext  } from "react";
 import { videoContext } from "../context/VideoContext";
-import {  VideoPlayer } from "../types";
+import {  VideoPlayer } from "../types/types";
 
 export default function usePlayerState(){
     const values = useContext<VideoPlayer>(videoContext);
@@ -16,8 +16,8 @@ export default function usePlayerState(){
         setCurrent:values?.setCurrent,
         load:values?.load,
         canPlay:values?.canPlay,
-        fullScreen:values?.fullScreen,
-        exitFullScreen:values?.exitFullScreen,
+        fullScreen:values?.fullScreen as (() => void),
+        exitFullScreen:values?.exitFullScreen as (() => void),
         screen:values?.screen,
         handleScreen:values?.handleScreen,
         reportChange:values?.reportChange

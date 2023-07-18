@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import usePlayerState from "../hooks/usePlayerState"
-import { PlayerStates, VideoPlayerProps } from "../types"
+import { PlayerStates, VideoPlayerProps } from "../types/types"
 import { Controls } from "./Controls"
 import { Loader, Video, VideoContainer } from "./StyledComponents";
 import { FullScreen, FullScreenHandle } from "react-full-screen";
@@ -10,7 +10,7 @@ export default function VideoPlayer({width,height,url}:VideoPlayerProps){
     const [hideControls,setHideControls] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
     const props = usePlayerState()
-    const {setPlayer,play,pause,state,setCurrent,load,canPlay, reportChange} = props;
+    const {setPlayer,play,pause,state,setCurrent,load,canPlay, reportChange,screen,exitFullScreen,fullScreen} = props;
     const handleScreen = props.handleScreen as FullScreenHandle
 
     const handleMouseMove = () => {
@@ -33,7 +33,10 @@ export default function VideoPlayer({width,height,url}:VideoPlayerProps){
     
 
     return (
-        <VideoContainer  width={width} height={height} onMouseMove={handleMouseMove} onClick={handleClick}>
+        <VideoContainer onDoubleClick={()=>{
+            if(screen?.option==='min') fullScreen()
+            else exitFullScreen()
+        }}  width={width} height={height} onMouseMove={handleMouseMove} onClick={handleClick}>
             <FullScreen handle={handleScreen} onChange={reportChange}>
                 <Video src={url} ref={videoRef} onLoadedData={load} onCanPlay={canPlay} onTimeUpdate={(e)=>{if(setCurrent) setCurrent(e.currentTarget.currentTime)}}/>
                 {state === PlayerStates.LOADING && <Loader />}

@@ -1,7 +1,7 @@
 import React from "react"
 import Player from "./components/App";
 import VideoContext from "./context/VideoContext";
-import { VideoPlayerProps } from "./types";
+import { VideoPlayerProps } from "./types/types";
 
 
 
